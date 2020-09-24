@@ -3,7 +3,7 @@
 {% set pageId = "page-search-results" %}
 
 {% block title %}
-    <title>Resultado da pesquisa</title>
+    <title>Search results</title>
 {% endblock title %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
         <img src="/assets/logo.svg" alt="logo">
         <a href="/">
             <span></span>
-            Voltar para home
+            Back to home
         </a>
     </header>
 
@@ -23,7 +23,7 @@
 
         {% if total > 0 %}
         <h4>
-            <strong>{{ total }} pontos</strong> encontrados
+            <strong>{{ total }} points</strong> found
         </h4>
         <div class="cards">
 
@@ -44,7 +44,7 @@
 
         {% else %}
         <h4>
-            <strong>Nenhum ponto</strong> encontrado
+            <strong>No point</strong> was found
         </h4>
         {% endif %}
 

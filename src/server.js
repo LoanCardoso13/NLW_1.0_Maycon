@@ -1,38 +1,40 @@
 const express = require("express");
 const server = express();
 
-//pegar o banco de dados
+// Getting the database
 const db = require("./database/db");
 
-//configurar pasta publica
+// Configuring public directory
 server.use(express.static("public"));
 
-//habilitar o uso do req.body na nossa aplicacao
+// Habilitating req.body in the application 
 server.use(express.urlencoded({ extended: true }));
 
-//utilizando template engine
+// Using template engine 
 const nunjucks = require("nunjucks");
 nunjucks.configure("src/views", {
     express: server,
     noCache: true
 })
 
-//configurar rotas da aplicacao
-//pagina inicial
-//req: requisicao
-//res: resposta
+// Routes of application
+// Initial page
+// req: require
+// res: respose
 server.get("/", (req,res) => {
     return res.render("index.html");
 })
 
+// Create-point page
 server.get("/create-point", (req,res) => {
     return res.render("create-point.html");
 })
 
+// Saving collection point (POST)
 server.post("/savepoint", (req,res) => {
 
-    //inserir dados no banco de dados
-    // 2 Inserir dados na tabela
+    // inserting data into the database
+    // insert data into table (SQL)
     const query = `
     INSERT INTO places(
         image,
@@ -67,28 +69,29 @@ server.post("/savepoint", (req,res) => {
 
 })
 
+// Search for collection point page
 server.get("/search", (req,res) => {
 
     const search = req.query.search;
 
     if(search == "") {
-        //pesquisa vazia
+        // no results
         return res.render("search-results.html", { total: 0 });
     }
 
-    //pegar os dados do banco de dados
-    //3 Consultar os dados da tabela
+    // take data from database 
+    // consult data from table 
     db.all(`SELECT * FROM places WHERE city LIKE '%${search}%'`, function(err,rows) {
         if(err) {
             return console.log(err);
         }
         const total = rows.length;
-        //mostrar a pagina html com os dados do banco de dados
+        // show html page filled with data from database 
         return res.render("search-results.html", { places: rows, total: total });    
     });
 
 })
 
 
-//ligar o servidor
+// Turn on server
 server.listen(3000)
