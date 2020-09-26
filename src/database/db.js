@@ -1,15 +1,18 @@
-//importar a dependencia do sqlite3
+// Importing SQLite3 module 
 const sqlite3 = require("sqlite3").verbose();
 
-//criar o objeto de banco de dados
+// Creating database into appropriate directory 
 const db = new sqlite3.Database("./src/database/database.db");
 
+// Exporting database variable so it can be used by other scripts
 module.exports = db;
 
-//utilizar o objeto de banco de dados para nossas operacoes
+// These are left here for reference in managing SQL database
+// 
 // db.serialize(() => {
-//     // Comandos SQL:
-//     // 1 Criar uma tabela
+// 
+//     // 4 SQL commands:
+//     // 1) Creating a table
 //     db.run(`
 //         CREATE TABLE IF NOT EXISTS places (
 //             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,7 +25,7 @@ module.exports = db;
 //             items TEXT
 //         );
 //     `);
-//     // 2 Inserir dados na tabela
+//     // 2) Inserting data into the table
 //     const query = `
 //     INSERT INTO places(
 //         image,
@@ -48,27 +51,28 @@ module.exports = db;
 //         if(err) {
 //             return console.log(err);
 //         }
-//         console.log("Cadastrado com sucesso!");
+//         console.log("Successfully registered!");
 //         console.log(this);
 //     }
 
 //     db.run(query, values, afterInsertData);
-//     // 3 Consultar os dados da tabela
+// 
+//     // 3) Consulting data from the table
 //     // db.all(`SELECT * FROM places`, function(err,rows) {
 //     //     if(err) {
 //     //         return console.log(err);
 //     //     }
-//     //     console.log("Aqui estao seus registros:");
+//     //     console.log("Here are the registered points:");
 //     //     console.log(rows);
 //     // });
     
 
-    // 4 Deletar um dado da tabela
+    // 4) Deleting data from table
     // db.run(`DELETE FROM places WHERE id = ?`, [3], function(err) {
     //     if(err) {
     //         return console.log(err);
     //     }
-    //     console.log("Registro deletado com sucesso!");
+    //     console.log("Register successfully deleted!");
     // })
 
 // });

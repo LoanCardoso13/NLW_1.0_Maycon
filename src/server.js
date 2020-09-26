@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 
-// Getting the database
+// Getting the database from exported module
 const db = require("./database/db");
 
 // Configuring public directory
@@ -31,10 +31,14 @@ server.get("/create-point", (req,res) => {
 })
 
 // Saving collection point (POST)
+// Method is embedded in form of create-point.html page
+// Each form's input name attribute value would show up in the browser' address
+// if form's method was left with default GET.
+// This POST method will execute db.run which will fetch create-point.html  
 server.post("/savepoint", (req,res) => {
 
     // inserting data into the database
-    // insert data into table (SQL)
+    // SQL query for inserting data into table
     const query = `
     INSERT INTO places(
         image,
@@ -60,13 +64,13 @@ server.post("/savepoint", (req,res) => {
         if(err) {
             return console.log(err);
         }
-        console.log("Cadastrado com sucesso!");
-        console.log(this);
+        // console.log(this);
+        // Toggle partial point-created.html
         return res.render("create-point.html", { saved: true });
     }
-
-    db.run(query, values, afterInsertData);
-
+    // POST method runs an SQL query with call-back function to render page and 
+    db.run(query, values, afterInsertData); // toggle partial HTML that runs
+    // a JavaScript command to go back to home page
 })
 
 // Search for collection point page
