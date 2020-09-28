@@ -34,7 +34,8 @@ server.get("/create-point", (req,res) => {
 // Method is embedded in form of create-point.html page
 // Each form's input name attribute value would show up in the browser' address
 // if form's method was left with default GET.
-// This POST method will execute db.run which will fetch create-point.html  
+// This POST method will execute db.run which will fetch create-point.html in 
+// its callback function 
 server.post("/savepoint", (req,res) => {
 
     // inserting data into the database
