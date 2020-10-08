@@ -3,7 +3,7 @@
 {% set pageId = "page-create-point" %}
 
 {% block title %}
-    <title>Collection point registration</title>
+    <title>Cadastro</title>
 {% endblock title %}
 
 {% block styles %}
@@ -16,19 +16,19 @@
     {% include "partials/page-header.html" %}
 
     <form action="/savepoint" method="POST">
-        <h1>Register a collection point</h1>
+        <h1>Cadastro do ponto de coleta</h1>
 
         <fieldset>
             <legend>
-                <h2>Entity form</h2>
+                <h2>Dados da entidade</h2>
             </legend>
             <div class="field-group">
                 <div class="field">
-                    <label for="name">Entity's name</label>
+                    <label for="name">Nome da entidade</label>
                     <input type="text" name="name" required>
                 </div>
                 <div class="field">
-                    <label for="name">Entity's picture</label>
+                    <label for="name">Imagem da entidade</label>
                     <input 
                     type="url" 
                     name="image"
@@ -38,27 +38,27 @@
             </div>
             <div class="field-group">
                 <div class="field">
-                    <label for="address">Address</label>
+                    <label for="address">Endereço</label>
                     <input type="text" name="address" required>
                 </div>
                 <div class="field">
-                    <label for="address2">Address 2</label>
+                    <label for="address2">Complemento</label>
                     <input type="text" name="address2" required>
                 </div>
             </div>
 
             <div class="field-group">
                 <div class="field">
-                    <label for="state">State</label>
+                    <label for="state">Estado</label>
                     <select name="uf" required>
-                        <option value="">Select State</option>
+                        <option value="">Selecione o Estado</option>
                     </select>
                     <input type="hidden" name="state">
                 </div>
                 <div class="field">
-                    <label for="city">City</label>
+                    <label for="city">Cidade</label>
                     <select name="city" disabled required>
-                        <option value="">Select City</option>
+                        <option value="">Selecione a cidade</option>
                     </select>
                 </div>
 
@@ -68,45 +68,45 @@
 
         <fieldset>
             <legend>
-                <h2>Collecting Items</h2>
-                <span>Select one or more of the following items</span>
+                <h2>Itens de coleta</h2>
+                <span>Selecione um ou mais dos itens abaixo</span>
             </legend>
 
             <div class="items-grid">
                 <li data-id="Lampadas">
                     <img src="/assets/lampadas.svg" alt="lampadas">
-                    <span>Light bulbs</span>
+                    <span>Lâmpadas</span>
                 </li>
 
                 <li data-id="Pilhas e Baterias">
                     <img src="/assets/baterias.svg" alt="Pilhas e Baterias">
-                    <span>Batteries</span>
+                    <span>Pilhas e Baterias</span>
                 </li>
 
                 <li data-id="Papeis e Papelao">
                     <img src="/assets/papeis-papelao.svg" alt="Papeis e Papelao">
-                    <span>Paper and cardboard</span>
+                    <span>Papéis e Papelão</span>
                 </li>
 
                 <li data-id="Residuos Eletronicos">
                     <img src="/assets/eletronicos.svg" alt="Residuos Eletronicos">
-                    <span>Electronic residues</span>
+                    <span>Resíduos Eletrônicos</span>
                 </li>
 
                 <li data-id="Residuos Organicos">
                     <img src="/assets/organicos.svg" alt="Residuos Organicos">
-                    <span>Organic residues</span>
+                    <span>Resíduos Orgânicos</span>
                 </li>
 
                 <li data-id="Oleo de Cozinha">
                     <img src="/assets/oleo.svg" alt="Oleo de Cozinha">
-                    <span>Cooking oil</span>
+                    <span>Óleo de cozinha</span>
                 </li>
             </div>
             <input type="hidden" name="items">
         </fieldset>
 
-        <button type="submit">Register point</button>
+        <button type="submit">Cadastrar ponto de coleta</button>
     </form>
 
 {% endblock content %}
